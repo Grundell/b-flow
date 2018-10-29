@@ -38,17 +38,14 @@ export function reducer(
       }
     }
     case fromReddit.LOAD_SUBREDDIT_SUCCESS: {
-      console.log(action.payload)
       const posts: redditData = action.payload;
-      console.log('posts', posts);
-
+      
       const enteties = posts.children.reduce((enteties: { [id: string] : redditChildren }, reddit) => {
         return {
           ...enteties,
           [reddit.data.id]: reddit,
         }
       }, {
-        ...state.enteties
       });
 
       return {

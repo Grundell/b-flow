@@ -8,6 +8,7 @@ export const LOAD_SUBREDDIT_SUCCESS = '[Reddit] Load subreddit Suceed';
 
 export class LoadSubreddit implements Action { 
   readonly type =  LOAD_SUBREDDIT;
+  constructor( public searchString?: string ){}
 }
 
 export class LoadSubredditFail implements Action { 

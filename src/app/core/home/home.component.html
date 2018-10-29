@@ -3,7 +3,7 @@
   <div class="posts" *ngFor="let post of (redditPost$ | async)">
     <mat-card class="reddit-card">
       <mat-card-header>
-        <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data.thumbnail + ')' }">
+        <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data?.thumbnail + ')' }">
         </div>
         <mat-card-title>{{post.data.title}}</mat-card-title>
         <mat-card-subtitle>{{post.data.author}}</mat-card-subtitle>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../../store'
 
 @Component({
   selector: 'app-searchbar',
@@ -7,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
   searchString: string;
-  constructor() { }
+  constructor( private store: Store<fromStore.RedditState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new fromStore.LoadSubreddit())
   }
 
   submit(){
+    this.store.dispatch(new fromStore.LoadSubreddit(this.searchString))
     console.log(this.searchString);
   }
 }
