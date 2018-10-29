@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { redditSearch } from '../models/reddit.model';
+import { map, catchError, tap } from 'rxjs/operators';
+import { redditSearch, redditData } from '../models/reddit.model';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RedditService {
-  api = 'https://www.reddit.com/r/'
+  url = 'https://www.reddit.com/'
+
   constructor(public http: HttpClient ) { }
   
-  getSubReddit(searchString?: string){
+  getSubReddit(searchString?: string) : Observable<any>{
     if(searchString){
       console.log('we have a string')
     }
     else{
-      return this.http.get(`${this.api}sweden.json?limit=10&count=10`)
-      .pipe(
-        map(
-          (res : redditSearch) => res.data
-        )
+      return this.http.get<any>(`${this.url}r/sweden.json?limit=9&count=10`).pipe(
+        map((res: redditSearch) => res.data),
+        tap(console.log),
+        catchError((err: any) => Observable.throw(err.json()) )
       )
+      
     }
+  }
+
+  getRedditComments(){
+    
   }
 }
 

@@ -1,17 +1,20 @@
 export interface redditSearch {
-  data: redditData;
+  data: redditData,
   kind: string;
 }
 
 export interface redditData{
-  after: string;
-  before: string;
-  children: redditChildren;
+  after?: string;
+  before?: string;
+  children?: redditChildren[];
+  dist?: number;
+  modhash?: string;
 }
 
 export interface redditChildren {
-  kind: string;
-  data: redditPost[];
+  id?: number;
+  kind?: string;
+  data?: redditPost;
 }
 
 export interface redditPost {
@@ -50,7 +53,7 @@ export interface redditPost {
     };
   hidden: boolean;
   hide_score: boolean;
-  id: string;
+  id?: string;
   is_crosspostable: boolean;
   is_meta: boolean;
   is_original_content: boolean;

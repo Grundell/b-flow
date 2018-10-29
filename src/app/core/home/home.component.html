@@ -1,6 +1,6 @@
 <!-- {{redditPost | json}} -->
-<div class="post-container">
-  <div class="posts" *ngFor="let post of redditPost">
+<div class="post-container"> 
+  <div class="posts" *ngFor="let post of (redditPost$ | async)">
     <mat-card class="reddit-card">
       <mat-card-header>
         <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data.thumbnail + ')' }">
@@ -10,10 +10,13 @@
       </mat-card-header>
       <div class="actions">
         <div class="score">
-          <mat-icon>score</mat-icon> {{post.data.score}}
+          <mat-icon>trending_up</mat-icon> {{post.data.score}}
         </div>
         <div class="comments">
           <mat-icon>mode_comment</mat-icon> {{post.data.num_comments}}
+        </div>
+        <div class="ups">
+          <mat-icon>arrow_upward</mat-icon> {{post.data.ups}}
         </div>
         <div class="link">
             <button mat-flat-button color="primary">View Post</button>

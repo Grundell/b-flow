@@ -7,11 +7,21 @@ import { SearchbarComponent } from './head/searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store'
+
+import { reducers, effects } from '../store/';
+import { SharedModule } from '../shared/shared.module';
+import * as fromService from '../shared/services';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forFeature('reddit', reducers),
+    EffectsModule.forFeature(effects),
   ],
   declarations: [
     HeadComponent, 
@@ -24,6 +34,9 @@ import { MaterialModule } from '../material/material.module';
     SearchbarComponent,
     FootComponent,
     HomeComponent
+  ],
+  providers: [
+    ...fromService.services
   ]
 })
 export class CoreModule { }
