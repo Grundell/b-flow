@@ -1,0 +1,26 @@
+.post-container{
+  width: 100%;
+  max-width: 950px;
+  margin: 30px auto 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+
+  .reddit-card{
+
+    .card-thumbnail{
+      background: cover;
+    }
+
+    .actions{
+      display: grid;
+      grid-template-columns: 140px 140px 1fr;
+      background:#f3f3f3;
+
+      .link{
+        align-self: end;
+        justify-self: end;
+      }
+    }
+  }
+}

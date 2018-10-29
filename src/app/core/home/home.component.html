@@ -1,0 +1,25 @@
+<!-- {{redditPost | json}} -->
+<div class="post-container">
+  <div class="posts" *ngFor="let post of redditPost">
+    <mat-card class="reddit-card">
+      <mat-card-header>
+        <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data.thumbnail + ')' }">
+        </div>
+        <mat-card-title>{{post.data.title}}</mat-card-title>
+        <mat-card-subtitle>{{post.data.author}}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="actions">
+        <div class="score">
+          <mat-icon>score</mat-icon> {{post.data.score}}
+        </div>
+        <div class="comments">
+          <mat-icon>mode_comment</mat-icon> {{post.data.num_comments}}
+        </div>
+        <div class="link">
+            <button mat-flat-button color="primary">View Post</button>
+        </div>
+      </div>
+    </mat-card>
+      <!-- <pre>{{post | json }}</pre> -->
+  </div>  
+</div>

@@ -1,0 +1,23 @@
+header{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 65px;
+  background:#2b244d;
+  color:#fff;
+
+  h3 {
+    margin:0;
+    font-weight: 400;
+  }
+
+  .brand{
+    align-self: center;
+    justify-self: center;
+  }
+  
+  .search-bar{
+    align-self: center;
+    justify-self: end;
+    margin:0 20px;
+  }
+}
