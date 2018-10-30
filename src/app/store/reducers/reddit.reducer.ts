@@ -20,7 +20,7 @@ export const initialState = {
   after: null,
   before: null,
   selectedThread: null,
-  comments: {},
+  comments: {}
 }
 
 export function reducer( 

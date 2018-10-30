@@ -1,5 +1,57 @@
 <div class="comments-container">
-  <div class="single-comment" *ngFor="let comment of (comments$ | async )">
-      {{comment.body }}
+  <div class="single-comment">
+    <div class="comment-data">
+        <div class="comment-upvotes">
+          <mat-icon>arrow_upward</mat-icon>  5
+        </div>
+        <div class="comment-score">
+          <mat-icon>trending_up</mat-icon> 4
+        </div>
+    </div>
+    <div class="comment-header">
+      <div class="comment-autor">
+        Comment Author
+      </div>
+      <div class="comment-date">
+        28 mars 2018
+      </div>
+    </div>
+    <div class="comment-body">
+      <div class="comment">
+          Snart är det dags för mig att flytta ut. Ett problem jag har i köket är att jag inte är så kreativ, jag har svårt att komma fram till vad jag ska äta. Oftast slutar det med att jag kastar in något halvfabrikat i ugnen. Har ni några tips på enkla recept eller någon hemsida? Tack på förhand!
+      </div>
+    </div>
   </div>
+  <div class="comment-replies">
+      <div class="single-comment">
+      <div class="comment-data">
+          <div class="comment-upvotes">
+            <mat-icon>arrow_upward</mat-icon>  5
+          </div>
+          <div class="comment-score">
+            <mat-icon>trending_up</mat-icon> 4
+          </div>
+      </div>
+      <div class="comment-header">
+        <div class="comment-autor">
+          Comment Author
+        </div>
+        <div class="comment-date">
+          28 mars 2018
+        </div>
+      </div>
+      <div class="comment-body">
+        <div class="comment">
+            Snart är det dags för mig att flytta ut. Ett problem jag har i köket är att jag inte är så kreativ, jag har svårt att komma fram till vad jag ska äta. Oftast slutar det med att jag kastar in något halvfabrikat i ugnen. Har ni några tips på enkla recept eller någon hemsida? Tack på förhand!
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="single-comment" *ngFor="let comment of (comments$ | async )">
+    >
+    <div class="comment-head">
+      {{comment.author}}
+    </div>
+      {{comment.body }}
+  </div> -->
 </div>

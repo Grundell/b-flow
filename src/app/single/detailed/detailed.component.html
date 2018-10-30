@@ -1,11 +1,16 @@
 <div class="detialed-container">
-      <mat-card class="single-reddit" *ngIf="(post$ | async) as post">
+      <!-- <mat-card class="single-reddit" *ngIf="(post$ | async) as post"> -->
+      <mat-card>
         <mat-card-header>
-          <mat-card-title>{{post.title}}</mat-card-title>
-          <mat-card-subtitle>{{post.author}}</mat-card-subtitle>
+          <!-- <mat-card-title>{{post.title}}</mat-card-title> -->
+          <mat-card-title>Mem-lös vecka - alla memes hänvisas till r/unket.
+            </mat-card-title>
+          <!-- <mat-card-subtitle>{{post.author}}</mat-card-subtitle> -->
+          <mat-card-subtitle>Norci</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div [innerHTML]="post.selftext"></div>
+          <div> 
+              Hej alla! Det känns som att vi har tagit memes för givet, och därmed har kvalitén börjat sjunka lite. Så kan vi inte ha det. Sweddit ska leverera de allra bästa memes, och för att leva upp till det behöver vi en paus. Vi kanske borde träffa andra subbar ett tag? Efter succé med förra mem-lös vecka tänkte vi köra det igen. Därför kommer vi f.o.m nu hänvisa alla memes till r/unket i en vecka fram tills 6/11. Med memes syftar vi på templates, ämnen och format som återanvänds med varierande text/bilder, typ det som går att hitta på knowyourmeme. Det är fortfarande fritt fram att posta roliga bilder som inte är memes, eller OC humor som inte hunnit bli en meme än. Vi ser fram emot er kreativitet! P.S: r/unket verkar vara under attack från Danskjävlar, försvara stället! P.P.S: Ni kan alltid skitposta mejmejs i humor-kanalen på vår discord, https://discord.gg/sweden! Allt gott, Sweddit-mods</div>
         </mat-card-content>
         <mat-card-actions>
           <app-comments></app-comments>
