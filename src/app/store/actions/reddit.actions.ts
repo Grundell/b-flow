@@ -1,10 +1,11 @@
  import { Action } from '@ngrx/store';
-import { redditSearch, redditData } from 'src/app/shared/models/reddit.model';
+import { redditSearch, redditData, redditPost } from 'src/app/shared/models/reddit.model';
 
  // Load subreddit 
 export const LOAD_SUBREDDIT = '[Reddit] Load subreddit';
 export const LOAD_SUBREDDIT_FAIL = '[Reddit] Load subreddit failed';
 export const LOAD_SUBREDDIT_SUCCESS = '[Reddit] Load subreddit Suceed';
+export const LOAD_POST_THREAD = '[Reddit] Load Post thread';
 
 export class LoadSubreddit implements Action { 
   readonly type =  LOAD_SUBREDDIT;
@@ -21,4 +22,9 @@ export class LoadSubredditSuccess implements Action {
   constructor( public payload: redditData ) {}
 }
 
-export type RedditAction = LoadSubreddit | LoadSubredditFail | LoadSubredditSuccess;
+export class SelectPost implements Action {
+  readonly type = LOAD_POST_THREAD;
+  constructor( public payload:  redditPost ) {}
+}
+
+export type RedditAction = LoadSubreddit | LoadSubredditFail | LoadSubredditSuccess | SelectPost;

@@ -1,7 +1,7 @@
 <!-- {{redditPost | json}} -->
 <div class="post-container"> 
   <div class="posts" *ngFor="let post of (redditPost$ | async)">
-    <mat-card class="reddit-card">
+    <mat-card class="reddit-card" (click)="selectPost(post.data)">
       <mat-card-header>
         <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data?.thumbnail + ')' }">
         </div>

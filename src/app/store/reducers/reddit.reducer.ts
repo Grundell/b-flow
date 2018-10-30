@@ -7,6 +7,7 @@ export interface  RedditState {
   before: string;
   loaded: boolean;
   loading: boolean;
+  selectedThread: redditPost;
 }
 
 
@@ -16,6 +17,7 @@ export const initialState = {
   loading: false,
   after: null,
   before: null,
+  selectedThread: null
 }
 
 export function reducer( 
@@ -55,6 +57,13 @@ export function reducer(
         after: action.payload.after,
         before: action.payload.before,
         enteties
+      }
+    }
+    case fromReddit.LOAD_POST_THREAD : {
+      console.log(action.payload);
+      return {
+        ...state, 
+        selectedThread: action.payload
       }
     }
   }
