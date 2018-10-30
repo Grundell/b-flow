@@ -1,0 +1,10 @@
+<div class="paging">
+  <ng-container *ngIf="(before | async) as before">
+    <div class="next" (click)="getNextPosts(before)"> Next </div>
+  </ng-container>
+  
+  <ng-container *ngIf="(after | async) as after">
+      <div class="previous" (click)="getPreviousPosts(after)"> Previous</div>
+  </ng-container>
+  
+</div>

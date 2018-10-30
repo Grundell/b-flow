@@ -1,5 +1,6 @@
 import { redditSearch, redditChildren, redditPost, redditData } from "../../shared/models/reddit.model";
 import * as fromReddit from '../actions/reddit.actions';
+import { state } from "@angular/animations";
 
 export interface  RedditState {
   enteties: { [id: string] : redditPost}
@@ -60,7 +61,6 @@ export function reducer(
       }
     }
     case fromReddit.LOAD_POST_THREAD : {
-      console.log(action.payload);
       return {
         ...state, 
         selectedThread: action.payload
@@ -73,5 +73,6 @@ export function reducer(
 
 export const getRedditLoading = (state: RedditState ) => state.loading;
 export const getRedditLoaded = (state: RedditState ) => state.loaded;
-export const getEnteties = ( state: RedditState ) => state.enteties;  
-
+export const getEnteties = ( state: RedditState ) => state.enteties; 
+export const getAfter = (state: RedditState ) => state.after;
+export const getBefore = (state: RedditState) => state.before;

@@ -18,11 +18,14 @@ export class  RedditEffects {
   loadChildren$ = this.actions$.ofType(redditActions.LOAD_SUBREDDIT)
     .pipe(
       switchMap((payload?: any) => {
+        console.log(payload);
         let searchTerm = payload.searchString || 'sweden';
-          return this.redditService.getSubReddit(searchTerm).pipe(
+        let after = payload.after || '';
+          return this.redditService.getSubReddit(searchTerm, after).pipe(
             map((res: redditData) =>
               new redditActions.LoadSubredditSuccess(res)
             ),
+            tap(data => console.log('retun data', data)),
             catchError(error => of(new redditActions.LoadSubredditFail(error)))
           )
       })

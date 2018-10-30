@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store'
 import { reducers, effects } from '../store/';
 import { SharedModule } from '../shared/shared.module';
 import * as fromService from '../shared/services';
+import { PagingComponent } from './home/paging/paging.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import * as fromService from '../shared/services';
     HeadComponent, 
     FootComponent, 
     HomeComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    PagingComponent
   ],
   exports: [
     HeadComponent,

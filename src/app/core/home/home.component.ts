@@ -3,8 +3,8 @@ import { RedditService } from 'src/app/shared/services/reddit.service';
 import { redditData, redditPost } from 'src/app/shared/models/reddit.model';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
-import * as fromReddit from '../../store/reducers'
-import * as Actions from '../../store/actions/reddit.actions'
+import * as fromReddit from '../../store/reducers';
+import * as Actions from '../../store/actions/reddit.actions';
 import { Observable } from 'rxjs' 
 
 @Component({
@@ -21,11 +21,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
      this.redditPost$ = this.store.select<redditPost[]>(fromReddit.getAllSubRedditsPosts);
-     
-    // this.redditService.getSubReddit().subscribe( (data: redditData) => {
-    //   this.redditPost = data.children;
-    //   console.log(data);
-    // });
   }
 
   selectPost(post){

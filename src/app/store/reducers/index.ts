@@ -32,3 +32,7 @@ export const getAllSubRedditsPosts = createSelector(
 export const getRedditLoading = createSelector(getRedditData, fromReddit.getRedditLoading);
 
 export const getRedditLoaded = createSelector(getRedditData, fromReddit.getRedditLoaded);
+
+export const getBefore = createSelector(getRedditData, fromReddit.getBefore);
+
+export const getAfter = createSelector(getRedditData, fromReddit.getAfter);

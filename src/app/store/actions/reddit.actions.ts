@@ -9,7 +9,11 @@ export const LOAD_POST_THREAD = '[Reddit] Load Post thread';
 
 export class LoadSubreddit implements Action { 
   readonly type =  LOAD_SUBREDDIT;
-  constructor( public searchString?: string ){}
+  
+  constructor(  public searchString?: string, 
+                public after?: string,
+                public before?: string
+              ){}
 }
 
 export class LoadSubredditFail implements Action { 
@@ -24,7 +28,7 @@ export class LoadSubredditSuccess implements Action {
 
 export class SelectPost implements Action {
   readonly type = LOAD_POST_THREAD;
-  constructor( public payload:  redditPost ) {}
+  constructor( public payload: redditPost ) {}
 }
 
 export type RedditAction = LoadSubreddit | LoadSubredditFail | LoadSubredditSuccess | SelectPost;
