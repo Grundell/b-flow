@@ -1,0 +1,5 @@
+<div class="comments-container">
+  <div class="single-comment" *ngFor="let comment of (comments$ | async )">
+      {{comment.body }}
+  </div>
+</div>

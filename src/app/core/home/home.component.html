@@ -2,7 +2,7 @@
 <app-paging></app-paging>
 <div class="post-container"> 
   <div class="posts" *ngFor="let post of (redditPost$ | async)">
-    <mat-card class="reddit-card" (click)="selectPost(post.data)">
+    <mat-card class="reddit-card">
       <mat-card-header>
         <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data?.thumbnail + ')' }">
         </div>
@@ -23,7 +23,7 @@
           <mat-icon>arrow_upward</mat-icon> {{post.data.ups}}
         </div>
         <div class="link">
-            <button mat-flat-button color="primary">View Post</button>
+          <button mat-flat-button color="primary" (click)="selectPost(post.data)">View Post</button>
         </div>
       </div>
     </mat-card>
