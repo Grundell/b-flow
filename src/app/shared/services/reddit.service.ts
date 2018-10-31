@@ -25,7 +25,7 @@ export class RedditService {
   }
 
   getRedditComments() : Observable<any>{
-      return this.http.get(`https://www.reddit.com/r/sweden/comments/9s9vr0/matlagningsm%C3%A5ndag_cooking_monday_29_october_2018.json`).pipe(
+      return this.http.get(`https://www.reddit.com/r/sweden/comments/9sn45k/meml%C3%B6s_vecka_alla_memes_h%C3%A4nvisas_till_runket.json`).pipe(
         map((res) => res[1]),
         catchError((err: any) => Observable.throw(err.json()) )
       )

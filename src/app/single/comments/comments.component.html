@@ -1,57 +1,38 @@
 <div class="comments-container">
-  <div class="single-comment">
-    <div class="comment-data">
-        <div class="comment-upvotes">
-          <mat-icon>arrow_upward</mat-icon>  5
-        </div>
-        <div class="comment-score">
-          <mat-icon>trending_up</mat-icon> 4
-        </div>
-    </div>
-    <div class="comment-header">
-      <div class="comment-autor">
-        Comment Author
-      </div>
-      <div class="comment-date">
-        28 mars 2018
-      </div>
-    </div>
-    <div class="comment-body">
-      <div class="comment">
-          Snart är det dags för mig att flytta ut. Ett problem jag har i köket är att jag inte är så kreativ, jag har svårt att komma fram till vad jag ska äta. Oftast slutar det med att jag kastar in något halvfabrikat i ugnen. Har ni några tips på enkla recept eller någon hemsida? Tack på förhand!
-      </div>
-    </div>
-  </div>
-  <div class="comment-replies">
-      <div class="single-comment">
-      <div class="comment-data">
-          <div class="comment-upvotes">
-            <mat-icon>arrow_upward</mat-icon>  5
-          </div>
-          <div class="comment-score">
-            <mat-icon>trending_up</mat-icon> 4
-          </div>
-      </div>
-      <div class="comment-header">
-        <div class="comment-autor">
-          Comment Author
-        </div>
-        <div class="comment-date">
-          28 mars 2018
-        </div>
-      </div>
-      <div class="comment-body">
-        <div class="comment">
-            Snart är det dags för mig att flytta ut. Ett problem jag har i köket är att jag inte är så kreativ, jag har svårt att komma fram till vad jag ska äta. Oftast slutar det med att jag kastar in något halvfabrikat i ugnen. Har ni några tips på enkla recept eller någon hemsida? Tack på förhand!
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- <div class="single-comment" *ngFor="let comment of (comments$ | async )">
-    >
-    <div class="comment-head">
-      {{comment.author}}
-    </div>
-      {{comment.body }}
-  </div> -->
+  <ng-container *ngFor="let comment of (comments$ |async )">
+    <ng-container *ngTemplateOutlet="singleComment; context: {comment : comment}"></ng-container>      
+  </ng-container> 
 </div>
+
+<ng-template #singleComment let-comment="comment">
+    <div class="single-comment">
+        <div class="comment-data">
+            <div class="comment-upvotes">
+              <mat-icon>arrow_upward</mat-icon>  {{comment?.score}}
+            </div>
+            <div class="comment-score">
+              <mat-icon>trending_up</mat-icon> {{comment?.ups}}
+            </div>
+        </div>
+        <div class="comment-header">
+          <div class="comment-autor">
+            {{comment?.author}}
+          </div>
+          <div class="comment-date">
+              {{comment?.created_utc}}
+          </div>
+        </div>
+        <div class="comment-body">
+          <div class="comment">
+              {{comment?.body}}
+          </div>
+        </div>
+      </div>
+      <div class="comment-replies" *ngIf="comment?.replies">
+          <ng-container *ngFor="let comment of comment.replies.data.children">
+            <ng-container *ngTemplateOutlet="singleComment; context: {comment : comment.data}">
+            </ng-container>
+          
+          </ng-container>
+      </div>   
+</ng-template>
