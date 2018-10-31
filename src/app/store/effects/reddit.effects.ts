@@ -34,8 +34,8 @@ export class  RedditEffects {
     loadComments$ = this.actions$.ofType(
       redditActions.LOAD_SUBREDDIT_COMMENTS
     ).pipe(
-      switchMap(() => {
-        return this.redditService.getRedditComments().pipe(
+      switchMap((payload) => {
+        return this.redditService.getRedditComments(payload).pipe(
           map((res) => { 
             return new redditActions.LoadSubredditCommentsSuccess(res.data);
             }

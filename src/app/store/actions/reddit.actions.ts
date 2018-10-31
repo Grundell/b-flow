@@ -8,6 +8,7 @@ export const LOAD_SUBREDDIT_SUCCESS = '[Reddit] Load subreddit Suceed';
 export const LOAD_POST_THREAD = '[Reddit] Load Post thread';
 export const LOAD_SUBREDDIT_COMMENTS = '[Reddit] Load Post comment thread';
 export const LOAD_SUBREDDIT_COMMENTS_SUCCESS = '[Reddit] Load Post comment thread succed';
+export const REMOVE_SUBREDDIT_COMMENTS = '[Reddit] Remove Post comment thread';
 
 export class LoadSubreddit implements Action { 
   readonly type =  LOAD_SUBREDDIT;
@@ -35,8 +36,7 @@ export class SelectPost implements Action {
 
 export class LoadSubredditComments implements Action {
   readonly type = LOAD_SUBREDDIT_COMMENTS;
-  constructor( public url?: string ){
-    console.log(url);
+  constructor( public payload: any ){
   }
 }
 
@@ -46,4 +46,8 @@ export class LoadSubredditCommentsSuccess implements Action {
   }
 }
 
-export type RedditAction = LoadSubreddit | LoadSubredditFail | LoadSubredditSuccess | SelectPost | LoadSubredditComments | LoadSubredditCommentsSuccess;
+export class RemoveSubredditComments implements Action {
+  readonly type = REMOVE_SUBREDDIT_COMMENTS;
+}
+
+export type RedditAction = LoadSubreddit | LoadSubredditFail | LoadSubredditSuccess | SelectPost | LoadSubredditComments | LoadSubredditCommentsSuccess | RemoveSubredditComments;

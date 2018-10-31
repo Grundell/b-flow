@@ -93,6 +93,11 @@ export function reducer(
         ...state,
         loading: true,
       }
+    case fromReddit.REMOVE_SUBREDDIT_COMMENTS:
+      return {
+        ...state,
+        comments: {}
+      }
   
   }
 

@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
   }
 
   selectPost(post: redditPost){
+    this.store.dispatch( new Actions.RemoveSubredditComments);
     this.store.dispatch(new Actions.SelectPost(post));
-    console.log(post.permalink);
     this.store.dispatch(
       new Actions.LoadSubredditComments(post.permalink)
       )
