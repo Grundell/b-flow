@@ -1,5 +1,5 @@
 <div class="detialed-container">
-      <mat-card class="single-reddit" *ngIf="(post$ | async) as post">
+      <mat-card class="single-reddit" *ngIf="(post$ | async) as post; else nothingLoaded">
         <mat-card-header>
           <mat-card-title>{{post.title}}</mat-card-title>
           <mat-card-subtitle>
@@ -16,4 +16,12 @@
           <app-comments></app-comments>
         </mat-card-actions>
       </mat-card>
+      <ng-template #nothingLoaded>
+        <div class="oups">
+          <div class="oups-message">
+              <h3>Ouuups! </h3>
+              <p> You've tried to access a single Reddit Post without going through the index page, this means we havent loaded any data from reddit yet and the store is empty, please go back to the <a routerLink="/">Homepage</a> or search for a SubReddit in the Search field</p> 
+          </div>
+        </div>
+      </ng-template>
 </div>

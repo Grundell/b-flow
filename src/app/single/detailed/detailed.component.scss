@@ -7,3 +7,28 @@
     margin:0 16px;
   }
 }
+
+.oups{
+  width: 640px;
+  margin: 30px auto;
+  border: 2px solid red;
+  padding: 0 40px 20px;
+  border-radius: 4px;
+
+  .oups-message{
+    padding: 30px;
+    h3{
+      margin-top:0;
+    }
+
+    a {
+      color:orangered;
+      font-weight: 700;
+      text-decoration: none;
+
+      &:visited{
+        color:orangered;
+      }
+    }
+  }
+}
