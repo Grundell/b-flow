@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   selectPost(post: redditPost){
+    window.scroll(0,0);
     this.store.dispatch( new Actions.RemoveSubredditComments);
     this.store.dispatch(new Actions.SelectPost(post));
     this.store.dispatch(
