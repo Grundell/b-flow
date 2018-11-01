@@ -1,10 +1,24 @@
-<div class="paging">
-  <ng-container *ngIf="(before | async) as before">
-    <div class="next" (click)="getNextPosts(before)"> Next </div>
+<div class="paging" *ngIf="(paging$ | async ) as paging">
+  <ng-container *ngIf="paging.before">
+      <button mat-raised-button color="primary" class="before" (click)="getPreviousPosts( 
+      'before' )"> Before</button>
   </ng-container>
-  
-  <ng-container *ngIf="(after | async) as after">
-      <div class="previous" (click)="getPreviousPosts(after)"> Previous</div>
+  <div class="numberOfPosts">
+    <mat-button-toggle-group appearance="legacy" [value]="(numPosts$ | async) ">
+
+      <mat-button-toggle (click)="updatePostAmount(5)" [value]="5" >  
+        5
+      </mat-button-toggle>
+      <mat-button-toggle (click)="updatePostAmount(10)" [value]="10">
+        10
+      </mat-button-toggle>
+      <mat-button-toggle (click)="updatePostAmount(25)" [value]="25">
+        25
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <ng-container *ngIf="paging.after">
+      <button mat-raised-button color="primary" class="previous" (click)="getPreviousPosts('after') "> Previous</button>
   </ng-container>
   
 </div>

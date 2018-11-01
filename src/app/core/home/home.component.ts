@@ -15,14 +15,16 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   redditPost$: Observable<redditPost[]>;
+  isLoading$: Observable<any>;
 
   constructor(
-    private store : Store<fromStore.RedditState>,
+    private store : Store<fromStore.appState>,
     private router: Router
   ) { }
 
   ngOnInit() {
      this.redditPost$ = this.store.select<redditPost[]>(fromReddit.getAllSubRedditsPosts);
+     this.isLoading$ = this.store.select(fromReddit.getRedditLoading);
   }
 
   selectPost(post: redditPost){
@@ -31,7 +33,6 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(
       new Actions.LoadSubredditComments(post.permalink)
       )
-    console.log(post);
     this.router.navigate(['/detailed', post.id]);
     
   }

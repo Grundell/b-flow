@@ -8,12 +8,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, effects } from '../store/';
 import { MaterialModule } from '../material/material.module';
 import { CommentsComponent } from './comments/comments.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SingleRoutes,
     MaterialModule,
+    SharedModule,
     StoreModule.forFeature('reddit', reducers),
     EffectsModule.forFeature(effects),
   ],

@@ -4,14 +4,21 @@
   grid-template-columns: 30px 1fr;
   align-items: center;
 }
-
 .post-container{
   width: 100%;
-  max-width: 950px;
+  max-width: 640px;
   margin: 30px auto 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 30px;
+  
+  .loading {
+    margin:100px auto;
+  }
+
+  .posts {
+    width: 640px;
+  }
 
   .reddit-card{
 
@@ -22,6 +29,10 @@
     .pinned {
       position: absolute;
       right: 15px;
+    }
+
+    .preview {
+      width: 100%;
     }
 
     .actions{

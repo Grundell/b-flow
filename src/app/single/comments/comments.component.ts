@@ -12,11 +12,13 @@ import { redditPost } from '../../shared/models/reddit.model';
 })
 export class CommentsComponent implements OnInit {
   comments$: Observable<redditPost[]>;
+  isLoading$: Observable<boolean>;
   constructor(
-    private store: Store<fromStore.RedditState>
+    private store: Store<fromStore.appState>
   ) { }
 
   ngOnInit() {
+    this.isLoading$ = this.store.select(fromStore.getRedditLoading);
     this.comments$ = this.store.select<redditPost[]>(fromStore.getAllComments)
   }
 

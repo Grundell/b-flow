@@ -19,9 +19,8 @@ export class  RedditEffects {
   loadChildren$ = this.actions$.ofType(redditActions.LOAD_SUBREDDIT)
     .pipe(
       switchMap((payload?: any) => {
-
-          let searchTerm = payload.searchString || 'sweden';
-          return this.redditService.getSubReddit(searchTerm).pipe(
+          let after = payload;
+          return this.redditService.getSubReddit(after).pipe(
             map((res: redditData) =>
               new redditActions.LoadSubredditSuccess(res)
             ),
@@ -39,24 +38,9 @@ export class  RedditEffects {
           map((res) => { 
             return new redditActions.LoadSubredditCommentsSuccess(res.data);
             }
-          ),tap(data => (console.log)),
+          ),
           catchError(error => of(new redditActions.LoadSubredditFail(error)))
         )
       })
     )
-
-
-    // loadSubredditCommet$ = this.actions$
-    // .ofType(redditActions.LOAD_SUBREDDIT_COMMENTS)
-    //   .pipe(
-    //     switchMap(() => {
-    //          return this.redditService.getRedditComments()
-    //          .pipe(
-    //            map( (res: redditSearch ) => {
-    //              new redditActions.LoadSubredditSuccess(res.data);
-    //            })
-    //           //  catchError(error => of(new redditActions.LoadSubredditFail(error)))
-    //          )
-    //      })
-    //   )
 }

@@ -12,11 +12,7 @@ export const REMOVE_SUBREDDIT_COMMENTS = '[Reddit] Remove Post comment thread';
 
 export class LoadSubreddit implements Action { 
   readonly type =  LOAD_SUBREDDIT;
-  
-  constructor(  public searchString?: string, 
-                public after?: string,
-                public before?: string
-              ){}
+  constructor( public payload?: any){}
 }
 
 export class LoadSubredditFail implements Action { 

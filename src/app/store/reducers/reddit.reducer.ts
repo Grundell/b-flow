@@ -1,11 +1,12 @@
 import { redditSearch, redditChildren, redditPost, redditData } from "../../shared/models/reddit.model";
 import * as fromReddit from '../actions/reddit.actions';
-import { state } from "@angular/animations";
 
 export interface  RedditState {
   enteties: { [id: string] : redditPost }
-  after: string;
-  before: string;
+  before_after: {
+    before: string;
+    after: string;
+  };
   loaded: boolean;
   loading: boolean;
   selectedThread: redditPost;
@@ -17,8 +18,10 @@ export const initialState = {
   enteties: {},
   loaded: false,
   loading: false,
-  after: null,
-  before: null,
+  before_after: {
+    before: null,
+    after: null,
+  },
   selectedThread: null,
   comments: {}
 }
@@ -46,10 +49,9 @@ export function reducer(
       const posts: redditData = action.payload;
       
       const enteties = posts.children.reduce((enteties: { [id: string] : redditChildren }, reddit) => {
-        console.log('enteties', enteties);
         return {
           ...enteties,
-          [reddit.data.id]: reddit,
+          [reddit.data.id]: reddit.data,
         }
       }, {
       });
@@ -58,8 +60,10 @@ export function reducer(
         ...state,
         loading: false,
         loaded: true,
-        after: action.payload.after,
-        before: action.payload.before,
+        before_after: {
+          after: action.payload.after,
+          before: action.payload.before
+        },
         enteties
       }
     }
@@ -107,7 +111,6 @@ export function reducer(
 export const getRedditLoading = (state: RedditState ) => state.loading;
 export const getRedditLoaded = (state: RedditState ) => state.loaded;
 export const getEnteties = ( state: RedditState ) => state.enteties; 
-export const getAfter = (state: RedditState ) => state.after;
-export const getBefore = (state: RedditState) => state.before;
+export const getPaging = (state: RedditState ) => state.before_after;
 export const getSelected = (state: RedditState ) => state.selectedThread;
 export const getComments = (state: RedditState ) => state.comments;

@@ -13,7 +13,7 @@ export class DetailedComponent implements OnInit {
   post$: Observable<redditPost>
 
   constructor(
-    private store: Store<fromStore.RedditState>
+    private store: Store<fromStore.appState>
   ) { }
 
   ngOnInit() {

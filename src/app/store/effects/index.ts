@@ -1,5 +1,6 @@
 import { RedditEffects } from './reddit.effects';
-
-export const effects: any[] = [RedditEffects];
+import { ApplicationEffects } from './application.effects';
+export const effects: any[] = [RedditEffects, ApplicationEffects];
 
 export * from './reddit.effects'; 
+export * from './application.effects'; 

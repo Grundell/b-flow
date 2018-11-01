@@ -21,6 +21,7 @@ import { PagingComponent } from './home/paging/paging.component';
     CommonModule,
     FormsModule,
     MaterialModule,
+    SharedModule,
     StoreModule.forFeature('reddit', reducers),
     EffectsModule.forFeature(effects),
   ],

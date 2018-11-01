@@ -11,6 +11,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 const MATERIAL_MODULES = [
   MatButtonModule,
@@ -21,7 +23,8 @@ const MATERIAL_MODULES = [
   MatChipsModule,
   MatIconModule,
   MatProgressSpinnerModule,
-  MatCardModule
+  MatCardModule,
+  MatButtonToggleModule
 ];
 
 @NgModule({

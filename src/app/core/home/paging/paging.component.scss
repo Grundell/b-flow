@@ -1,12 +1,22 @@
 .paging{
   width: 100%;
-  max-width: 950px;
+  max-width: 640px;
   margin: 20px auto;
+  padding:5px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 
-  .previous {
+  
+  .before{
+    justify-self: start;
+  }
+
+  .numberOfPosts{
     grid-column-start: 2;
+    justify-self: center;
+  }
+  .previous {
+    grid-column-start: 3;
     justify-self: end;
   }
 }

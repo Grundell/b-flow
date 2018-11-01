@@ -1,32 +1,40 @@
 <!-- {{redditPost | json}} -->
 <app-paging></app-paging>
 <div class="post-container"> 
+    <div class="loading" *ngIf="(isLoading$ | async)">
+        <mat-spinner></mat-spinner>
+    </div>
   <div class="posts" *ngFor="let post of (redditPost$ | async)">
     <mat-card class="reddit-card">
       <mat-card-header>
-        <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post.data?.thumbnail + ')' }">
-        </div>
-        <mat-card-title>{{post.data.title}}</mat-card-title>
-        <mat-card-subtitle>{{post.data.author}}</mat-card-subtitle>
-        <div class="pinned" *ngIf="post.data.stickied">
+        <!-- <div mat-card-avatar class="card-thumbnail" [ngStyle]="{'background': 'url('+ post?.thumbnail + ')' }"> -->
+        <!-- </div> -->
+        <mat-card-title>{{post?.title}}</mat-card-title>
+        <mat-card-subtitle>
+          {{post?.author}} - {{post?.created_utc | datePipe | date}}</mat-card-subtitle>
+        <div class="pinned" *ngIf="post?.stickied">
             <mat-icon>pin_drop</mat-icon>
         </div>
       </mat-card-header>
+      <ng-container *ngIf="post?.preview">
+        <img class="preview" [src]="post.preview | image" alt="">
+      </ng-container>
       <div class="actions">
         <div class="score">
-          <mat-icon>trending_up</mat-icon> {{post.data.score}}
+          <mat-icon>trending_up</mat-icon> {{post?.score}}
         </div>
         <div class="comments">
-          <mat-icon>mode_comment</mat-icon> {{post.data.num_comments}}
+          <mat-icon>mode_comment</mat-icon> {{post?.num_comments}}
         </div>
         <div class="ups">
-          <mat-icon>arrow_upward</mat-icon> {{post.data.ups}}
+          <mat-icon>arrow_upward</mat-icon> {{post?.ups}}
         </div>
         <div class="link">
-          <button mat-flat-button color="primary" (click)="selectPost(post.data)">View Post</button>
+          <button mat-flat-button color="primary" (click)="selectPost(post)">View Post</button>
         </div>
       </div>
     </mat-card>
       <!-- <pre>{{post | json }}</pre> -->
   </div>  
 </div>
+<app-paging></app-paging>
