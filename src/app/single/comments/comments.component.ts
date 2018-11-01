@@ -18,7 +18,7 @@ export class CommentsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.isLoading$ = this.store.select(fromStore.getRedditLoading);
+    this.isLoading$ = this.store.select(fromStore.getLoadingComments);
     this.comments$ = this.store.select<redditPost[]>(fromStore.getAllComments)
   }
 

@@ -59,6 +59,9 @@ export const getAllComments = createSelector(
   }
 );
 
+export const getLoadingComments = createSelector(getRedditData,
+  fromReddit.getCommetsLodaing);
+
 
 export const getRedditLoading = createSelector(getRedditData, fromReddit.getRedditLoading);
 

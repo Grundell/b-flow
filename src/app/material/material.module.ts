@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+
 
 
 const MATERIAL_MODULES = [
@@ -24,7 +26,8 @@ const MATERIAL_MODULES = [
   MatIconModule,
   MatProgressSpinnerModule,
   MatCardModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatBottomSheetModule
 ];
 
 @NgModule({

@@ -14,8 +14,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  redditPost$: Observable<redditPost[]>;
-  isLoading$: Observable<any>;
+  redditPost$:  Observable<redditPost[]>;
+  isLoading$:   Observable<boolean>;
+  isLoaded$:    Observable<boolean>;
+  searchTerm$:  Observable<string>;
 
   constructor(
     private store : Store<fromStore.appState>,
@@ -24,7 +26,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
      this.redditPost$ = this.store.select<redditPost[]>(fromReddit.getAllSubRedditsPosts);
-     this.isLoading$ = this.store.select(fromReddit.getRedditLoading);
+     this.isLoading$ = this.store.select<boolean>(fromReddit.getRedditLoading);
+     this.isLoaded$ = this.store.select<boolean>(fromReddit.getRedditLoaded);
+     this.searchTerm$ = this.store.select<string>(fromStore.getSearchTerm);
   }
 
   selectPost(post: redditPost){
@@ -36,8 +40,4 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/detailed', post.id]);
     
   }
-
-
-
-
 }

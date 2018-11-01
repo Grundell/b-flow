@@ -1,5 +1,6 @@
 import { redditSearch, redditChildren, redditPost, redditData } from "../../shared/models/reddit.model";
 import * as fromReddit from '../actions/reddit.actions';
+import { state } from "@angular/animations";
 
 export interface  RedditState {
   enteties: { [id: string] : redditPost }
@@ -11,19 +12,21 @@ export interface  RedditState {
   loading: boolean;
   selectedThread: redditPost;
   comments: {[id: string] : redditPost};
+  loadingComments: boolean;
 }
 
 
 export const initialState = {
   enteties: {},
-  loaded: false,
+  loaded: null,
   loading: false,
   before_after: {
     before: null,
     after: null,
   },
   selectedThread: null,
-  comments: {}
+  comments: {},
+  loadingComments:false, 
 }
 
 export function reducer( 
@@ -83,7 +86,8 @@ export function reducer(
 
      return {
        ...state,
-      comments
+      comments,
+      loadingComments: false,
      }
 
     case fromReddit.LOAD_POST_THREAD : {
@@ -95,7 +99,7 @@ export function reducer(
     case fromReddit.LOAD_SUBREDDIT_COMMENTS: 
       return {
         ...state,
-        loading: true,
+        loadingComments: true,
       }
     case fromReddit.REMOVE_SUBREDDIT_COMMENTS:
       return {
@@ -114,3 +118,5 @@ export const getEnteties = ( state: RedditState ) => state.enteties;
 export const getPaging = (state: RedditState ) => state.before_after;
 export const getSelected = (state: RedditState ) => state.selectedThread;
 export const getComments = (state: RedditState ) => state.comments;
+export const getCommetsLodaing = (state: RedditState) => state.loadingComments;
+

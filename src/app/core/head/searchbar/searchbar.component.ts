@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import * as fromStore from '../../../store'
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchbar',
@@ -12,18 +13,19 @@ import { map } from 'rxjs/operators'
 export class SearchbarComponent implements OnInit {
   searchString: string;
   searchTerm$: Observable<string>;
-  constructor( private store: Store<fromStore.appState>) { }
+  constructor( 
+    private router: Router,
+    private store: Store<fromStore.appState>
+    ) { }
 
   ngOnInit() {
-    // this.store.dispatch(new fromStore.LoadSubreddit())
     this.searchTerm$ = this.store.select(fromStore.getSearchTerm);
-
     this.store.dispatch(new fromStore.LoadSubreddit)
   }
 
   submit(){
     this.store.dispatch(new fromStore.SetSearchTerm(this.searchString));
-    // this.store.dispatch(new fromStore.LoadSubreddit(this.searchString)) 
+    this.router.navigate(['/'])
   }
   
 }

@@ -26,12 +26,10 @@ export class PagingComponent implements OnInit {
   }
 
   getPreviousPosts(postKey){
-    console.log(postKey);
     this.store.dispatch(new Actions.LoadSubreddit(postKey))
   }
 
   getNextPosts(postKey){
-    console.log(postKey);
     this.store.dispatch(new Actions.LoadSubreddit(postKey))
   }
 
